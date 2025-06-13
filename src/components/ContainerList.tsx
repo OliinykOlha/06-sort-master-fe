@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Container {
   id: string;
@@ -8,8 +8,9 @@ interface Container {
 }
 
 const ContainerList = () => {
-  const [containers, setContainers] = useState([]);
-  const [error, setError] = useState(null);
+  const [containers, setContainers] = useState<Container[]>([]);
+  const [error, setError] = useState<Error|null>(null);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     fetch("/api/containers")
@@ -21,12 +22,30 @@ const ContainerList = () => {
       .catch(setError);
   }, []);
 
-  if (error)
+    const handleDelete = async (id: string) => {
+    try {
+      const response = await fetch(`/api/containers/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Deletion error');
+      }
+
+      setContainers(prev => prev.filter(container => container.id !== id));
+      setMessage('Container successfully deleted');
+    } catch (err) {
+      setMessage((err as Error).message);
+    }
+  };
+    
+ if (error)
     return <div className="text-red-500">Error loading containers.</div>;
 
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Rubbish Containers</h2>
+       {message && <p>{message}</p>}
       <ul className="space-y-4">
         {containers.map((container: Container) => (
           <li
@@ -34,8 +53,15 @@ const ContainerList = () => {
             className="p-4 rounded-lg shadow-md text-white"
             style={{ backgroundColor: container.color }}
           >
+            <div className="flex justify-between items-center">
             <h3 className="text-xl font-semibold">{container.name}</h3>
+            <button className="bg-red-600 hover:bg-red-700 px-2" onClick={()=>{handleDelete(container.id)}}>Remove</button>
+            </div>
             <p>{container.description}</p>
+            <div className="flex flex-col mt-4 space-y-2">
+            <input aria-label="New item name" type="text" id="item_name" className="border rounded px-3 py-2"/>
+            <button className="w-fit bg-gray-100 hover:bg-gray-200 text-black px-2 py-1 rounded" id="item_name" onClick={()=>{}}>Add Item</button>
+          </div>
           </li>
         ))}
       </ul>
