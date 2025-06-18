@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CreateItemForm from "./CreateItemForm";
 
 interface Container {
   id: string;
@@ -58,10 +59,7 @@ const ContainerList = () => {
             <button className="bg-red-600 hover:bg-red-700 px-2" onClick={()=>{handleDelete(container.id)}}>Remove</button>
             </div>
             <p>{container.description}</p>
-            <div className="flex flex-col mt-4 space-y-2">
-            <input aria-label="New item name" type="text" id="item_name" className="border rounded px-3 py-2"/>
-            <button className="w-fit bg-gray-100 hover:bg-gray-200 text-black px-2 py-1 rounded" id="item_name" onClick={()=>{}}>Add Item</button>
-          </div>
+            <CreateItemForm containerId={container.id}/>
           </li>
         ))}
       </ul>
