@@ -46,7 +46,7 @@ function CreateItemForm({ containerId }: { containerId: string }) {
       <div className="flex flex-col mt-4 space-y-2">
         <input
           name="name"
-          className="border rounded px-3 py-2"
+          className="border-2 border-black rounded-full px-3 py-2 text-black font-bold bg-white"
           aria-label="New item name"
           type="text"
           id="item_name"
@@ -56,22 +56,22 @@ function CreateItemForm({ containerId }: { containerId: string }) {
           onBlur={formik.handleBlur}
         />
         {formik.touched.name && formik.errors.name &&(
-         <p className="text-sm text-red-500">{formik.errors.name}</p>
+         <p className="text-sm text-red-500 font-extrabold font-sans">{formik.errors.name}</p>
         )}
        
       {message && (
         <div
           className={`text-sm p-2 rounded ${
             message.type === "success"
-              ? "bg-green-100 text-green-700"
-              : "bg-red-100 text-red-700"
+              ? "bg-green-100 text-green-700 font-bold"
+              : "bg-red-100 text-red-700 font-bold"
           }`}
         >
           {message.text}
         </div>
       )}
         <button
-          className="w-fit bg-gray-100 hover:bg-gray-200 text-black px-2 py-1 rounded"
+          className="w-fit bg-gray-100 hover:bg-gray-200 text-black px-5 py-2 rounded-full border-2"
           type="submit"
         >
           Add Item
