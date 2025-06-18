@@ -98,16 +98,17 @@ const CreateContainerForm = () => {
           >
             Color (Hex)
           </label>
+          <span className="block text-xs font-medium text-gray-700">Click here to choose a color</span>
           <input
             id="color"
-            type="text"
+            type="color"
             {...formik.getFieldProps("color")}
-            className={`w-full px-3 py-2 text-sm border rounded-md shadow-sm ${
+            className={`w-full h-10 px-3 py-2 text-sm border rounded-md cursor-pointer shadow-sm ${
               formik.touched.color && formik.errors.color
                 ? "border-red-500"
                 : "border-input"
             }`}
-            placeholder="#FFA500"
+            
           />
           {formik.touched.color && formik.errors.color && (
             <p className="text-sm text-red-500">{formik.errors.color}</p>
