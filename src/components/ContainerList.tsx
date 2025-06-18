@@ -10,7 +10,7 @@ interface Container {
 const ContainerList = () => {
   const [containers, setContainers] = useState<Container[]>([]);
   const [error, setError] = useState<Error|null>(null);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState<string|null>('');
 
   useEffect(() => {
     fetch("/api/containers")
@@ -45,7 +45,7 @@ const ContainerList = () => {
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Rubbish Containers</h2>
-       {message && <p>{message}</p>}
+       {message && <p className="text-green-500">{message}</p>}
       <ul className="space-y-4">
         {containers.map((container: Container) => (
           <li
