@@ -5,9 +5,10 @@ import type { Item } from "../commons/Item";
 interface Props {
   item: Item;
   container?: Container;
+  showLink?: boolean;
 }
 
-export default function ItemCard({ item, container }: Props) {
+export default function ItemCard({ item, container, showLink = true}: Props) {
   return (
     <li
       key={item.id}
@@ -16,7 +17,7 @@ export default function ItemCard({ item, container }: Props) {
     >
       <div className="flex justify-between items-center">
         <h5 className="text-black font-bold">Name: {item.name}</h5>
-        <Link to={`/items/${item.id}`}>To item page</Link>
+        {showLink && <Link to={`/items/${item.id}`} >To item page</Link>}
       </div>
       {container && (
         <h6 className="text-sm italic text-black">
