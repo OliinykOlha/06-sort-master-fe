@@ -1,4 +1,4 @@
-import ItemList from "../components/ui/ItemList";
+import ItemList from "../components/ItemList";
 import { ItemListWrapper } from "./item.styles";
 
 export default function Items() {

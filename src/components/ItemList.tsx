@@ -1,17 +1,7 @@
 import { useEffect, useState } from "react";
-
-interface Item {
-  id: string;
-  name: string;
-  containerId: string;
-}
-
-interface Container {
-  id: string;
-  color: string;
-  name: string;
-  description: string;
-}
+import type { Item } from "../commons/Item";
+import type { Container } from "../commons/Container";
+import ItemCard from "./ItemCard";
 
 const ItemList = () => {
   const [items, setItems] = useState<Item[]>([]);
@@ -41,23 +31,12 @@ const ItemList = () => {
 
    return (
     <div>
-      <ul>
-        {items.map((item) => {
-          const container = containers.find(c => c.id === item.containerId);
-          return (
-            <li
-              key={item.id}
-              style={{ backgroundColor: container?.color}}
-              className="text-white p-4 rounded mb-2 w-150"
-            >
-              <h5 className="text-black font-bold">{item.name}</h5>
-              {container && (
-                <h6 className="text-sm italic text-black">Container: {container.name}</h6>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+     <ul>
+      {items.map((item) => {
+        const container = containers.find((c) => c.id===item.containerId)
+        return <ItemCard key={item.id} item={item} container={container}/>
+      })}
+     </ul>
     </div>
   );
  
