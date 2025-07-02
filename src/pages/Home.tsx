@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CreateAdvertForm from "../components/CreateAdvertForm";
 
 interface Result {
   item: string;
@@ -66,7 +67,10 @@ const Home = () => {
           </li>
         ))}
       </ul>
+    <CreateAdvertForm />
     </div>
+    
+   
   );
 };
 
