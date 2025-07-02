@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import CreateAdvertForm from "../components/CreateAdvertForm";
+import { AdvertCarousel } from "../components/AdvertCarousel";
+import { Link } from "react-router-dom";
 
 interface Result {
   item: string;
@@ -67,8 +68,12 @@ const Home = () => {
           </li>
         ))}
       </ul>
-    <CreateAdvertForm />
+      <AdvertCarousel />
+      <div className="mt-6 p-3 rounded bg-amber-100 cursor-pointer inline-block">
+    <Link to={'/advert'}>Create your advert</Link>
     </div>
+    </div>
+    
     
    
   );

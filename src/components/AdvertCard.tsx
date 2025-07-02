@@ -1,15 +1,15 @@
 import type { Advert } from "../commons/Advert"
 
 interface Props {
-    advert: Advert;
+    data: Advert;
 }
 
-export default function AdvertCard({advert}: Props) {
+export default function AdvertCard({data}: Props) {
     return (
-        <li>
-        <h4>{advert.title}</h4>
-        <p>{advert.description}</p>
-        <img src={advert.photo} alt={advert.title} />
+        <li className="bg-amber-50 border-1 rounded-md">
+        <h4 className="text-2xl font-bold dark:text-white">{data.title}</h4>
+        <p className="indent-8">{data.description}</p>
+        <img src={data.photo} alt={data.title} />
         </li>
     )
 }
