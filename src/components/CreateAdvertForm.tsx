@@ -76,9 +76,13 @@ const CreateAdvertForm = () => {
         />
          </div>
          <div className="space-y-2">
-         <label htmlFor="photo"
-         className="w-full h-10 px-3 py-2 text-sm border rounded-md cursor-pointer shadow-sm"
-         >Photo:</label>
+         <label htmlFor="photo">Photo:</label>
+         <input 
+        id="description"
+        type="text"
+        className="w-full h-10 px-3 py-2 text-sm border rounded-md cursor-pointer shadow-sm"
+        {...formik.getFieldProps("photo")}
+        />
 
          </div>
         <button

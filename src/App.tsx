@@ -6,6 +6,7 @@ import Containers from "./pages/Containers";
 import CreateContainerForm from "./components/CreateContainerForm";
 import Items from "./pages/Items";
 import SingleItemPage from "./pages/SingleItemPage";
+import CreateAdvertPage from "./pages/CreateAdvertPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/container-form" element={<CreateContainerForm />} />
           <Route path="/items" element={<Items/>} />
           <Route path="/items/:id" element={<SingleItemPage/>} />
+          <Route path="/advert" element={<CreateAdvertPage />} />
         </Routes>
       </Layout>
     </div>
